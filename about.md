@@ -1,11 +1,11 @@
 layout: page
 title: "about"
-permalink: /contact
+permalink: /about
 
 <!DOCTYPE html>
 <html>
 <body>
 <h1>About</h1>
-<p>Conact: retunkel@terpmail.umd.edu</p>
+<p>Contact: retunkel@terpmail.umd.edu</p>
 </body>
 </html>
