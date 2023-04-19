@@ -2,7 +2,6 @@ layout: page
 title: "about"
 permalink: /about
 
-<!DOCTYPE html>
 <html>
 <body>
 <h1>About</h1>

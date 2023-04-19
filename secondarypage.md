@@ -2,7 +2,6 @@ layout: page
 title: "about"
 permalink: /secondarypage
 
-<!DOCTYPE html>
 <html>
 <body>
 <h1>Secondary Page</h1>
