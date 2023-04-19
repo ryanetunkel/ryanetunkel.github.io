@@ -92,14 +92,14 @@ form {
 }
 
 .left_section {
-  background-color: rgba(161, 130, 118, 0.8);
+  background-color: #cecece;
   flex: 0 1 auto;
   margin: 1rem;
   padding: 1.5rem;
 }
 
 .right_section {
-  background-color: rgba(185, 210, 177, 0.702);
+  background-color: #cecece;
   flex: 1 2 auto;
   margin: 1rem;
   align-items: center;
@@ -117,7 +117,7 @@ form {
 .footer {
   flex-shrink: 0;
   padding: 1rem;
-  background-color: #a10a0a;
+  background-color: #cecece;
   font-size: 1.2rem;
   font-weight: 600;
   display: flex;
@@ -125,7 +125,7 @@ form {
 }
 
 .footer a {
-  color: rgb(7, 128, 180);
+  color: #4a4a4a;
   text-decoration: underline;
 }
 
