@@ -1,15 +1,48 @@
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body class="body">
-  <h1>Main Page</h1>
-  <p>This is the main page.</p>
-  <div><a href="/contact.html"> Contact Page </a></div>
-  <div><a href="/secondarypage.html"> Secondary Page </a></div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="body">
+    <div class="wrapper">
+      <header class="header"><h1>D&D Assistant</h1></header>
+      <div class="container">
+        <div class="left_section box">
+          <h2>Form Inputs</h2>
+          <form class="box main_form">
+            <button type="button" id="data_load">Load Data</button>
+            <button type="button" id="data_clear">Clear Data</button>
+            <div>
+              <label for="resto">Filter By Type</label>
+              <input type="text" name="resto" id="resto" />
+            </div>
+            <div class="buttons">
+              <button type="button" id="generate">Generate List</button>
+            </div>
+          </form>
+        </div>
+        <div class="right_section box">
+          <!-- right side -->
+          <!-- images box -->
+          <h2>Local Restaurant List</h2>
+          <div id="map" class="box"></div>
+          <h1>Main Page</h1>
+          <p>This is the main page.</p>
+          <div><a href="/secondarypage.html"> Secondary Page </a></div>
+          <div><a href="/contact.html"> Contact Page </a></div>
+          <ol class="box" id="restaurant_list">
+            A list of D&D Spells
+          </ol>
+        </div>
+      </div>
+      <footer class="footer">
+        RYANETUNKEL
+        <a href="http://github.com/ryanetunkel">Ryan E Tunkel On GitHub</a>
+      </footer>
+    </div>
+    <script src="./script.js"></script>
+  </body>
 </html>
