@@ -23,7 +23,6 @@ body {
   background-color: aliceblue;
 }
 
-
 a {
   display: inline-block;
   text-decoration: none;
@@ -37,6 +36,11 @@ h2, h3 {
 
 form {
   accent-color: hsla(120, 100%, 50%, 0.482);
+}
+
+/* Added to see if can make left tab buttons look better*/
+button tab_selector {
+  margin: auto;
 }
 
 .wrapper {
@@ -89,6 +93,13 @@ form {
   height:fit-content;
   padding: 1.5rem;
   margin: 0 auto;
+}
+
+.left_tab {
+  background-color: #cecece;
+  flex: 0 1 auto;
+  margin: 0rem;
+  padding: 0.5rem;
 }
 
 .left_section {
