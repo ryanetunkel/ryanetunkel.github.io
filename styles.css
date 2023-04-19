@@ -1,5 +1,143 @@
+html {
+  background-color: #fff;
+  font-size: 16px;
+  min-width: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
+  padding: 0;
+
+  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
   background-color: aliceblue;
-  text-align: center;
+}
+
+
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+h2, h3 {
+  margin:0;
+  padding:0;
+  padding-bottom:1.5rem;
+}
+
+form {
+  accent-color: hsla(120, 100%, 50%, 0.482);
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  flex: 1;
+}
+
+.container {
+  margin: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex:1;
+}
+
+.header {
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1.5rem;
+}
+
+.header h1 {
+  display: block;
+  /* this will push other blocks out of the way */
+
+  /* colors */
+  background-color: #cecece;
+  color: #4a4a4a;
+
+  /* shapes */
+  border-radius: 6px;
+  font-size: 1.5rem;
+  padding: 1.25rem;
+  margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
+
+  /* box-shadows are fancy */
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+}
+
+.box {
+  background-color: rgba(239, 239, 239, 0.40);
+  border: 2px dashed;
+  border-radius: 4px;
+
+  width: fit-content;
+  height:fit-content;
+  padding: 1.5rem;
+  margin: 0 auto;
+}
+
+.left_section {
+  background-color: rgba(161, 130, 118, 0.8);
+  flex: 0 1 auto;
+  margin: 1rem;
+  padding: 1.5rem;
+}
+
+.right_section {
+  background-color: rgba(185, 210, 177, 0.702);
+  flex: 1 2 auto;
+  margin: 1rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+  This block is actually dependent on the "container" block having a flex set on it
+  and the "wrapper" block displaying as a flex column with a "vertical height" (vh) of 100.
+  That serves to cram the footer to the bottom of the page.
+*/
+
+.footer {
+  flex-shrink: 0;
+  padding: 1rem;
+  background-color: #a10a0a;
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: flex-end;
+}
+
+.footer a {
+  color: rgb(7, 128, 180);
+  text-decoration: underline;
+}
+
+/*
+  This is an example of a 'pseudoclass'
+  In this instance, it says what to do if a mouse hovers over a link
+  This is pretty desktop-specific, since there's no hover function on touchscreens
+*/
+.footer a:hover {
+  /* Hue, saturation, luminosity, alpha */
+  background-color: rgb(7, 128, 180);
+  /* red, green, blue, alpha */
+  color: #a10a0ac5;
+  text-decoration: none;
 }
