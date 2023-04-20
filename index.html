@@ -10,17 +10,38 @@
     <div class="wrapper">
       <header class="header"><h1>D&D Assistant</h1></header>
       <div class="container">
-        <div class="left_tab">
+        <div class="section side_panel">
           <div>
-            <button type="tab_selector" href="/secondarypage.html"> Secondary Page </a>
+            <a>Characters</a>
           </div>
           <div>
-           <button href="/contact.html"> Contact Page </a>
-         </div>
+            <a>Classes</a>
+          </div>
+          <div>
+            <a>Combat</a>
+          </div>
+          <div>
+            <a>Equipment</a>
+          </div>
+          <div>
+            <a>Gameplay</a>
+          </div>
+          <div>
+            <a>Magic Items</a>
+          </div>
+          <div>
+            <a>Monsters</a>
+          </div>
+          <div>
+            <a>Spells</a>
+          </div>
+          <div>
+            <a>Appendices</a>
+          </div>
         </div>
-        <div class="left_section box">
-          <h2>Form Inputs</h2>
-          <form class="box main_form">
+        <div class="section box">
+          <h2>Spell Filter</h2>
+          <form class="subbox main_form">
             <button type="button" id="data_load">Load Data</button>
             <button type="button" id="data_clear">Clear Data</button>
             <div>
@@ -35,19 +56,24 @@
         <div class="right_section box">
           <h2>D&D Spells</h2>
           <div>
-            <ol class="box" id="restaurant_list">
+            <ol class="subbox" id="restaurant_list">
               A graph of D&D Spells
             </ol>
           </div>
           <div>
-            <ol class="box" id="restaurant_list">
+            <ol class="subbox" id="restaurant_list">
               A list of D&D Spells
             </ol>
           </div>
         </div>
       </div>
       <footer class="footer">
-        <a href="http://github.com/ryanetunkel">Ryan E Tunkel On GitHub</a>
+        <div>
+          <a href="http://github.com/ryanetunkel">Ryan E Tunkel On GitHub</a>
+        </div>
+        <div>
+          <a href="/contact.html">Contact Page </a>
+        </div>
       </footer>
     </div>
     <script src="./script.js"></script>
