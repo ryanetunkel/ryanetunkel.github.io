@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   background-color: #fff;
   font-size: 16px;
@@ -69,19 +73,15 @@ form {
 
 .header h1 {
   display: block;
-  /* this will push other blocks out of the way */
 
-  /* colors */
   background-color: #cecece;
   color: #4a4a4a;
 
-  /* shapes */
   border-radius: 6px;
   font-size: 1.5rem;
   padding: 1.25rem;
-  margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
+  margin:0; 
 
-  /* box-shadows are fancy */
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
 }
 
@@ -136,12 +136,6 @@ form {
   flex-direction: column;
 }
 
-/*
-  This block is actually dependent on the "container" block having a flex set on it
-  and the "wrapper" block displaying as a flex column with a "vertical height" (vh) of 100.
-  That serves to cram the footer to the bottom of the page.
-*/
-
 .footer {
   flex-shrink: 0;
   padding: 1rem;
@@ -157,31 +151,18 @@ form {
   color: #4a4a4a;
 }
 
-/*
-  This is an example of a 'pseudoclass'
-  In this instance, it says what to do if a mouse hovers over a link
-  This is pretty desktop-specific, since there's no hover function on touchscreens
-*/
 .footer a:hover {
-  /* Hue, saturation, luminosity, alpha */
   background-color: #cecece;
-  /* red, green, blue, alpha */
   color: #0777a7;
   text-decoration: none;
 }
 
-/*
-Form Styles
-*/
-
 form input {
-  /* This is a hack to make sure our boxes line up with one another nicely */
   width: 100%;
-  width: -moz-available;          /* WebKit-based browsers will ignore this. */
-  width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  width: -moz-available;          
+  width: -webkit-fill-available;  
   width: fill-available;
 
-  /* here we are setting white space correctly */
   margin-bottom: 1rem;
   height: 2rem;
   border-radius: 4px;
@@ -189,18 +170,16 @@ form input {
 
 form label {
   width: 100%;
-  width: -moz-available;          /* WebKit-based browsers will ignore this. */
-  width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  width: -moz-available;          
+  width: -webkit-fill-available;  
   width: fill-available;
   align-items: flex-start;
 
-  display: block; /* this turns the label text into a box we can set margins on */
+  display: block; 
   margin-bottom: 0.5rem;
 }
 
 @media only screen and (max-width: 736px) {
-  /* Rules in here will only apply when a screen is the correct size */
-  /* check it out by using your developer tools to shrink your screen-size */
 .container {
   flex-direction: column;
   justify-content: center;
@@ -209,8 +188,8 @@ form label {
 
 .box {
   width: 100%;
-  width: -moz-available;          /* WebKit-based browsers will ignore this. */
-  width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  width: -moz-available;          
+  width: -webkit-fill-available;  
   width: fill-available;
   align-items: flex-start;
 }
