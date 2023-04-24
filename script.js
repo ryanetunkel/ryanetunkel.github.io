@@ -1,3 +1,9 @@
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
+}
+
 function injectHTML(list) {
   console.log("fired injectHTML");
   const target = document.querySelector("#dnd_list");
@@ -15,6 +21,15 @@ function filterList(list, query) {
     const lowerCaseQuery = query.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
   });
+}
+
+function cutDndList(list) {
+  console.log("fired cut list");   // Array Method that does for-loop math to make code cleaner, easier to read, and use less reasoning
+  const range = [...Array(15).keys()]; // ... is a destructuring element, makes an array of 15 elements that definitely only has 15 elements in it
+  return (newArray = range.map((item) => { // map does same as foreach but returns new array
+    const index = getRandomIntInclusive(0, list.length - 1);
+    return list[index];
+  }));
 }
 
 async function mainEvent() { 
@@ -54,8 +69,9 @@ async function mainEvent() {
     console.log("Loading data"); // this is substituting for a "breakpoint" - it prints to the browser to tell us we successfully submitted the form
 
     // Basic GET request - this replaces the form Action
-    let results = await fetch(
-      apiSite.concat(searchTerm)
+    const results = await fetch( // may need to be let
+      apiSite
+      //apiSite.concat(searchTerm)
     );
 
     // This changes the response from the GET into data we can use - an "object"
@@ -70,6 +86,7 @@ async function mainEvent() {
 
   generateListButton.addEventListener("click", (event) => {
     console.log("generate new list");
+    currentList = cutDndList(parsedData);
     console.log(currentList);
     injectHTML(currentList);
   });
