@@ -11,39 +11,19 @@
       <header class="header"><h1>D&D Assistant</h1></header>
       <div class="container">
         <div class="section side_panel">
-          <div>
-            <a id="general_search">General Search</a>
-          </div>
-          <div>
-            <a id="armor">Armor</a>
-          </div>
-          <div>
-            <a id="backgrounds">Backgrounds</a>
-          </div>
-          <div>
-            <a id="classes">Classes</a>
-          </div>
-          <div>
-            <a id="conditions">Conditions</a>
-          </div>
-          <div>
-            <a id="feats">Feats</a>
-          </div>
-          <div>
-            <a id="magic_items">Magic Items</a>
-          </div>
-          <div>
-            <a id="monsters">Monsters</a>
-          </div>
-          <div>
-            <a id="races">Races</a>
-          </div>
-          <div>
-            <a id="spells">Spells</a>
-          </div>
-          <div>
-            <a id="weapons">Weapons</a>
-          </div>
+          <ul>
+            <li id="general_search">General Search</li>
+            <li id="armor">Armor</li>
+            <li id="backgrounds">Backgrounds</li>
+            <li id="classes">Classes</li>
+            <li id="conditions">Conditions</li>
+            <li id="feats">Feats</li>
+            <li id="magic_items">Magic Items</li>
+            <li id="monsters">Monsters</li>
+            <li id="races">Races</li>
+            <li id="spells">Spells</li>
+            <li id="weapons">Weapons</li>
+          </ul>
         </div>
         <div class="section box">
           <h2>Filter</h2>
@@ -64,6 +44,13 @@
           <div>
             <ol class="subbox" id="dnd_list">
               A graph of D&D Features
+
+              <div style="width: 800px">
+                <canvas id="acquisitions"></canvas>
+              </div>
+
+              <script type="module" src="acquisitions.js"></script>
+           
             </ol>
           </div>
           <div>
@@ -82,6 +69,9 @@
         </div>
       </footer>
     </div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+
     <script src="./script.js"></script>
   </body>
 </html>

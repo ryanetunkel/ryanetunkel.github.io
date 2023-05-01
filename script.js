@@ -51,7 +51,7 @@ async function mainEvent() {
   const spellsFilter = document.querySelector("#spells");
   const weaponsFilter = document.querySelector("#weapons");
   const apiSite = "https://api.open5e.com/";
-  let searchTerm = "";
+  let searchTerm = "search";
   
   generateListButton.classList.add("hidden");
 
@@ -75,7 +75,7 @@ async function mainEvent() {
     );
 
     // This changes the response from the GET into data we can use - an "object"
-    const storedList = await results.json();
+    let storedList = await results.json();
     localStorage.setItem("storedData", JSON.stringify(storedList));
     parsedData = storedList;
 
@@ -107,6 +107,9 @@ async function mainEvent() {
   generalSearchFilter.addEventListener("click", (event) => {
     console.log("general search filter");
     searchTerm = "search";
+    currentList = cutDndList(parsedData);
+    console.log(currentList);
+    injectHTML(currentList);
   });
 
   armorFilter.addEventListener("click", (event) => {
@@ -158,6 +161,27 @@ async function mainEvent() {
     console.log("weapons filter");
     searchTerm = "weapons";
   });
+
+  // const ctx = document.getElementById('dndChart');
+    
+  //     new Chart(ctx, {
+  //       type: 'bar',
+  //       data: {
+  //         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  //         datasets: [{
+  //           label: 'Quantity',
+  //           data: [12, 19, 3, 5, 2, 3],
+  //           borderWidth: 1
+  //         }]
+  //       },
+  //       options: {
+  //         scales: {
+  //           y: {
+  //             beginAtZero: true
+  //           }
+  //         }
+  //       }
+  //     });
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests

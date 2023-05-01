@@ -38,6 +38,12 @@ a:hover {
   text-decoration: none;
 }
 
+li:hover {
+  background-color: #cecece;
+  color: #0777a7;
+  text-decoration: none;
+}
+
 h2, h3 {
   margin:0;
   padding:0;
