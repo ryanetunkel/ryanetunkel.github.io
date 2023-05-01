@@ -50,7 +50,7 @@ async function mainEvent() {
   const racesFilter = document.querySelector("#races");
   const spellsFilter = document.querySelector("#spells");
   const weaponsFilter = document.querySelector("#weapons");
-  const apiSite = "https://api.open5e.com/";
+  const apiSite = "https://api.open5e.com/search/?format=json";
   let searchTerm = "search";
   
   generateListButton.classList.add("hidden");

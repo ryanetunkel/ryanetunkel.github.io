@@ -44,12 +44,10 @@
           <div>
             <ol class="subbox" id="dnd_list">
               A graph of D&D Features
-
-              <div style="width: 800px">
+              <!-- Add a style such as style="width: 800px" if want dif from as is -->
+              <div>
                 <canvas id="acquisitions"></canvas>
               </div>
-
-              <script type="module" src="acquisitions.js"></script>
            
             </ol>
           </div>
@@ -57,6 +55,7 @@
             <ol class="subbox" id="dnd_list">
               A list of D&D Features
             </ol>
+            <div class="lds-ellipsis" id="data_load_animation"><div></div><div></div><div></div><div></div></div>
           </div>
         </div>
       </div>
@@ -71,6 +70,7 @@
     </div>
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <!-- <script type="module" src="acquisitions.js"></script> -->
 
     <script src="./script.js"></script>
   </body>
