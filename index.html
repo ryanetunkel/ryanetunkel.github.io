@@ -1,38 +1,39 @@
+<!-- You're retrying by following the Figma to Code video, 
+  put all the files outside of folders including the src folder
+  back into attempt 1 and take out the ones in attempt 2, this 
+  is so the submission still has something there -->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>D&D Assistant</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>Ryan Tunkel's INST377 Labs</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+
+    <link rel="stylesheet" href="style.css" />
+
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
   </head>
-  <body class="body">
+  <body>
     <div class="wrapper">
-      <header class="header"><h1>D&D Assistant</h1></header>
+      <header class="header"><h1>Ryan Tunkel's Labs for INST377</h1></header>
+      <!-- wrapper -->
       <div class="container">
-        <div class="section side_panel">
-          <ul>
-            <li id="general_search">General Search</li>
-            <li id="armor">Armor</li>
-            <li id="backgrounds">Backgrounds</li>
-            <li id="classes">Classes</li>
-            <li id="conditions">Conditions</li>
-            <li id="feats">Feats</li>
-            <li id="magic_items">Magic Items</li>
-            <li id="monsters">Monsters</li>
-            <li id="races">Races</li>
-            <li id="spells">Spells</li>
-            <li id="weapons">Weapons</li>
-          </ul>
-        </div>
-        <div class="section box">
-          <h2>Filter</h2>
-          <form class="subbox main_form">
-            <button type="button" id="data_load">Load Data</button>
-            <button type="button" id="data_clear">Clear Data</button>
-            <div>
-              <label for="text_field">Search</label>
-              <input type="text" name="text_field" id="text_field" />
+        <!-- container -->
+        <div class="left_section box">
+          <!-- left inputs -->
+          <h2>Form Inputs</h2>
+          <!-- THIS IS FOR LAB 5 -->
+          <form class="box main_form">
+          <button type="button" id="data_load">Load County Data</button>
+          <button type="button" id="data_clear">Clear County Data</button>
+           <div>
+              <label for="resto">Filter By Restaurant Name</label>
+              <input type="text" name="resto" id="resto">
             </div>
             <div class="buttons">
               <button type="button" id="generate">Generate List</button>
@@ -40,38 +41,21 @@
           </form>
         </div>
         <div class="right_section box">
-          <h2>D&D Features</h2>
-          <div>
-            <ol class="subbox" id="dnd_list">
-              A graph of D&D Features
-              <!-- Add a style such as style="width: 800px" if want dif from as is -->
-              <div>
-                <canvas id="acquisitions"></canvas>
-              </div>
-           
-            </ol>
-          </div>
-          <div>
-            <ol class="subbox" id="dnd_list">
-              A list of D&D Features
-            </ol>
-            <div class="lds-ellipsis" id="data_load_animation"><div></div><div></div><div></div><div></div></div>
-          </div>
+          <!-- right side -->
+          <!-- images box -->
+          <h2>Local Restaurant List</h2>
+          <div id="map" class="box"></div>
+          <ol class="box" id="restaurant_list">
+            A list of local restaurants
+          </ol>
+          <div class="lds-ellipsis" id="data_load_animation"><div></div><div></div><div></div><div></div></div>
         </div>
       </div>
       <footer class="footer">
-        <div>
-          <a href="http://github.com/ryanetunkel">Ryan E Tunkel On GitHub</a>
-        </div>
-        <div>
-          <a href="/contact.html">Contact Page</a>
-        </div>
+        RYANETUNKEL
+        <a href="http://github.com/ryanetunkel">Ryan E Tunkel On GitHub</a>
       </footer>
     </div>
-
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
-    <!-- <script type="module" src="acquisitions.js"></script> -->
-
     <script src="./script.js"></script>
   </body>
 </html>

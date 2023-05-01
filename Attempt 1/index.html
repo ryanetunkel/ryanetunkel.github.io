@@ -1,0 +1,77 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D&D Assistant</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="body">
+    <div class="wrapper">
+      <header class="header"><h1>D&D Assistant</h1></header>
+      <div class="container">
+        <div class="section side_panel">
+          <ul>
+            <li id="general_search">General Search</li>
+            <li id="armor">Armor</li>
+            <li id="backgrounds">Backgrounds</li>
+            <li id="classes">Classes</li>
+            <li id="conditions">Conditions</li>
+            <li id="feats">Feats</li>
+            <li id="magic_items">Magic Items</li>
+            <li id="monsters">Monsters</li>
+            <li id="races">Races</li>
+            <li id="spells">Spells</li>
+            <li id="weapons">Weapons</li>
+          </ul>
+        </div>
+        <div class="section box">
+          <h2>Filter</h2>
+          <form class="subbox main_form">
+            <button type="button" id="data_load">Load Data</button>
+            <button type="button" id="data_clear">Clear Data</button>
+            <div>
+              <label for="text_field">Search</label>
+              <input type="text" name="text_field" id="text_field" />
+            </div>
+            <div class="buttons">
+              <button type="button" id="generate">Generate List</button>
+            </div>
+          </form>
+        </div>
+        <div class="right_section box">
+          <h2>D&D Features</h2>
+          <div>
+            <ol class="subbox" id="dnd_list">
+              A graph of D&D Features
+              <!-- Add a style such as style="width: 800px" if want dif from as is -->
+              <div>
+                <canvas id="acquisitions"></canvas>
+              </div>
+           
+            </ol>
+          </div>
+          <div>
+            <ol class="subbox" id="dnd_list">
+              A list of D&D Features
+            </ol>
+            <div class="lds-ellipsis" id="data_load_animation"><div></div><div></div><div></div><div></div></div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <div>
+          <a href="http://github.com/ryanetunkel">Ryan E Tunkel On GitHub</a>
+        </div>
+        <div>
+          <a href="/contact.html">Contact Page</a>
+        </div>
+      </footer>
+    </div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <!-- <script type="module" src="acquisitions.js"></script> -->
+
+    <script src="./script.js"></script>
+  </body>
+</html>

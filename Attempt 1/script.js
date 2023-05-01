@@ -6,7 +6,7 @@ function getRandomIntInclusive(min, max) {
 
 function injectHTML(list) {
   console.log("fired injectHTML");
-  const target = document.querySelector("#restaurant_list");
+  const target = document.querySelector("#dnd_list");
   target.innerHTML = "";
   list.forEach((item) => {
     const str = `<li>${item.name}</li>`;
@@ -23,7 +23,7 @@ function filterList(list, query) {
   });
 }
 
-function cutRestaurantList(list) {
+function cutDndList(list) {
   console.log("fired cut list");   // Array Method that does for-loop math to make code cleaner, easier to read, and use less reasoning
   const range = [...Array(15).keys()]; // ... is a destructuring element, makes an array of 15 elements that definitely only has 15 elements in it
   return (newArray = range.map((item) => { // map does same as foreach but returns new array
@@ -32,46 +32,28 @@ function cutRestaurantList(list) {
   }));
 }
 
-function initMap() {
-  // 38.9072 N, 77.0369 W
-  const carto = L.map('map').setView([38.98, -76.93], 13); // L means Use Leaflet
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  }).addTo(carto);
-  return carto;
-}
-
-function markerPlace(array, map) {
-  console.log("array for markers", array);
-
-  map.eachLayer((layer) => {
-    if (layer instanceof L.Marker) {
-      layer.remove();
-    }
-  });
-
-  array.forEach((item) => {
-    console.log("markerPlace", item);
-    const {coordinates} = item.geocoded_column_1;
-
-    L.marker([coordinates[1], coordinates[0]]).addTo(map);
-  });
-}
-
 async function mainEvent() { 
   // the async keyword means we can make API requests
   const mainForm = document.querySelector(".main_form"); // This class name needs to be set on your form before you can listen for an event on it
   const loadDataButton = document.querySelector("#data_load");
   const clearDataButton = document.querySelector("#data_clear");
   const generateListButton = document.querySelector("#generate");
-  const textField = document.querySelector("#resto");
+  const textField = document.querySelector("#text_field");
+  const generalSearchFilter = document.querySelector("#general_search");
+  const armorFilter = document.querySelector("#armor");
+  const backgroundsFilter = document.querySelector("#backgrounds");
+  const classesFilter = document.querySelector("#classes");
+  const conditionsFilter = document.querySelector("#conditions");
+  const featsFilter = document.querySelector("#feats");
+  const magicItemsFilter = document.querySelector("#magic_items");
+  const monstersFilter = document.querySelector("#monsters");
+  const racesFilter = document.querySelector("#races");
+  const spellsFilter = document.querySelector("#spells");
+  const weaponsFilter = document.querySelector("#weapons");
+  const apiSite = "https://api.open5e.com/search/?format=json";
+  let searchTerm = "search";
   
-  const loadAnimation = document.querySelector("#data_load_animation");
-  loadAnimation.style.display = "none";
   generateListButton.classList.add("hidden");
-
-  const carto = initMap();
 
   const storedData = localStorage.getItem("storedData");
   let parsedData = JSON.parse(storedData);
@@ -85,32 +67,28 @@ async function mainEvent() {
   loadDataButton.addEventListener("click", async (submitEvent) => { 
     // async has to be declared on every function that needs to "await" something 
     console.log("Loading data"); // this is substituting for a "breakpoint" - it prints to the browser to tell us we successfully submitted the form
-    loadAnimation.style.display = "inline-block";
 
     // Basic GET request - this replaces the form Action
-    const results = await fetch(
-      "https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json"
+    const results = await fetch( // may need to be let
+      apiSite
+      //apiSite.concat(searchTerm)
     );
 
     // This changes the response from the GET into data we can use - an "object"
-    const storedList = await results.json();
+    let storedList = await results.json();
     localStorage.setItem("storedData", JSON.stringify(storedList));
     parsedData = storedList;
 
     if (parsedData?.length > 0) { 
       generateListButton.classList.remove("hidden");
     }
-
-    loadAnimation.style.display = "none";
-    // console.table(storedList); 
   });
 
   generateListButton.addEventListener("click", (event) => {
     console.log("generate new list");
-    currentList = cutRestaurantList(parsedData);
+    currentList = cutDndList(parsedData);
     console.log(currentList);
     injectHTML(currentList);
-    markerPlace(currentList, carto);
   });
 
   textField.addEventListener("input", (event) => {
@@ -118,7 +96,6 @@ async function mainEvent() {
     const newList = filterList(currentList, event.target.value);
     console.log(newList);
     injectHTML(newList);
-    markerPlace(newList, carto);
   });
 
   clearDataButton.addEventListener("click", (event) => {
@@ -126,6 +103,85 @@ async function mainEvent() {
     localStorage.clear();
     console.log("localStorage Check", localStorage.getItem("storedData"));
   });
+
+  generalSearchFilter.addEventListener("click", (event) => {
+    console.log("general search filter");
+    searchTerm = "search";
+    currentList = cutDndList(parsedData);
+    console.log(currentList);
+    injectHTML(currentList);
+  });
+
+  armorFilter.addEventListener("click", (event) => {
+    console.log("armor filter");
+    searchTerm = "armor";
+  });
+
+  backgroundsFilter.addEventListener("click", (event) => {
+    console.log("backgrounds filter");
+    searchTerm = "backgrounds";
+  });
+
+  classesFilter.addEventListener("click", (event) => {
+    console.log("classes filter");
+    searchTerm = "classes";
+  });
+
+  conditionsFilter.addEventListener("click", (event) => {
+    console.log("conditions filter");
+    searchTerm = "conditions";
+  });
+
+  featsFilter.addEventListener("click", (event) => {
+    console.log("feats filter");
+    searchTerm = "feats";
+  });
+
+  magicItemsFilter.addEventListener("click", (event) => {
+    console.log("magic items filter");
+    searchTerm = "magicitems";
+  });
+
+  monstersFilter.addEventListener("click", (event) => {
+    console.log("monsters filter");
+    searchTerm = "monsters";
+  });
+
+  racesFilter.addEventListener("click", (event) => {
+    console.log("races filter");
+    searchTerm = "races";
+  });
+
+  spellsFilter.addEventListener("click", (event) => {
+    console.log("spells filter");
+    searchTerm = "spells";
+  });
+
+  weaponsFilter.addEventListener("click", (event) => {
+    console.log("weapons filter");
+    searchTerm = "weapons";
+  });
+
+  // const ctx = document.getElementById('dndChart');
+    
+  //     new Chart(ctx, {
+  //       type: 'bar',
+  //       data: {
+  //         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  //         datasets: [{
+  //           label: 'Quantity',
+  //           data: [12, 19, 3, 5, 2, 3],
+  //           borderWidth: 1
+  //         }]
+  //       },
+  //       options: {
+  //         scales: {
+  //           y: {
+  //             beginAtZero: true
+  //           }
+  //         }
+  //       }
+  //     });
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests
