@@ -59,19 +59,66 @@ function markerPlace(array, map) {
   });
 }
 
+function initChart(target, data, labels) {
+  const chart = new Chart(target, {
+    type: 'bar',
+    data: {
+    labels: labels,   
+    datasets: [data]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+  return chart;
+}
+
+function processChartData(data) {
+  const dataForChart = data.reduce((col, item, idx) => {
+    // split by major watershed - major_wshed //switch to spell_level when switch to dnd api
+    if (!col[item.major_wshed]) {
+      col[item.major_wshed] = 1
+    }
+    else {
+      col[item.major_wshed] += 1
+    }
+    return col;
+  }, {});
+
+  const labels = Object.keys(dataForChart);
+  const dataSet = {
+    label: "Times Cleaned of Trash",
+    data: Object.values(dataForChart),
+    borderWidth: 1
+  }
+
+  // console.log(dataForChart); // uncomment to see results of stuff in inspect console tab
+  return [dataSet, labels];
+}
+
+function updateChart(chart, newInfo) {
+  const chartData = processChartData(newInfo);
+  chart.data.labels = chartData[1];
+  console.log(chartData);
+  chart.data.datasets[0].data = chartData[0];
+  chart.update();
+}
+
 async function mainEvent() { 
   // the async keyword means we can make API requests
-  const mainForm = document.querySelector(".main_form"); // This class name needs to be set on your form before you can listen for an event on it
   const loadDataButton = document.querySelector("#data_load");
   const clearDataButton = document.querySelector("#data_clear");
   const generateListButton = document.querySelector("#generate");
-  const textField = document.querySelector("#resto");
-  
+  const textField = document.querySelector("#list_selector");
+  const chart = document.querySelector("#myChart");
+
   const loadAnimation = document.querySelector("#data_load_animation");
   loadAnimation.style.display = "none";
   generateListButton.classList.add("hidden");
-
-  const carto = initMap();
 
   const storedData = localStorage.getItem("storedData");
   let parsedData = JSON.parse(storedData);
@@ -81,6 +128,10 @@ async function mainEvent() {
 
   let currentList = []; // this is "scoped" to the main event function
   
+
+  const chartData = processChartData(parsedData);
+  const newChart = initChart(chart, chartData[0], chartData[1]);
+
   /* We need to listen to an "event" to have something happen in our page - here we're listening for a "submit" */
   loadDataButton.addEventListener("click", async (submitEvent) => { 
     // async has to be declared on every function that needs to "await" something 
@@ -89,8 +140,13 @@ async function mainEvent() {
 
     // Basic GET request - this replaces the form Action
     const results = await fetch(
-      "https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json"
+      "https://data.princegeorgescountymd.gov/resource/9tsa-iner.json" //already replaced with litter dataset
+      // "https://api.open5e.com/spells/?format=json"
     );
+
+    // Need to get it so the results that stores the json got from the fetch() request specifies the "results" 
+    // array in the dnd api json request - 37:25 in the video was where was when was getting an array to return
+    // albeit full of undefined results when was trying to implement the dnd version
 
     // This changes the response from the GET into data we can use - an "object"
     const storedList = await results.json();
@@ -110,7 +166,7 @@ async function mainEvent() {
     currentList = cutRestaurantList(parsedData);
     console.log(currentList);
     injectHTML(currentList);
-    markerPlace(currentList, carto);
+    updateChart(newChart, currentList);
   });
 
   textField.addEventListener("input", (event) => {
@@ -118,14 +174,15 @@ async function mainEvent() {
     const newList = filterList(currentList, event.target.value);
     console.log(newList);
     injectHTML(newList);
-    markerPlace(newList, carto);
+    updateChart(newChart, newList);
   });
 
-  clearDataButton.addEventListener("click", (event) => {
-    console.log("clear browser data");
-    localStorage.clear();
-    console.log("localStorage Check", localStorage.getItem("storedData"));
-  });
+  // TODO: add data clear button
+  // clearDataButton.addEventListener("click", (event) => {
+  //   console.log("clear browser data");
+  //   localStorage.clear();
+  //   console.log("localStorage Check", localStorage.getItem("storedData"));
+  // });
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests

@@ -39,6 +39,12 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  background-color: #cecece;
+  color: #0777a7;
+  text-decoration: none;
+}
+
 h2, h3 {
   margin:0;
   padding:0;
@@ -87,19 +93,15 @@ form {
 
 .header h1 {
   display: block;
-  /* this will push other blocks out of the way */
 
-  /* colors */
-  background-color: #f1d6b8;
-  color: #4a4a4a;
+  background-color: #e97a7a;
+  color: #0f0f0f;
 
-  /* shapes */
   border-radius: 6px;
   font-size: 1.5rem;
   padding: 1.25rem;
-  margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
+  margin:0; 
 
-  /* box-shadows are fancy */
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
 }
 
@@ -117,10 +119,9 @@ form {
   margin-bottom: 1rem;
 }
 
-
 .box {
   background-color: rgba(239, 239, 239, 0.40);
-  border: 2px dashed;
+  border: 1px solid;
   border-radius: 4px;
 
   width: fit-content;
@@ -129,15 +130,26 @@ form {
   margin: 0 auto;
 }
 
-.left_section {
-  background-color: rgba(161, 130, 118, 0.8);
+.subbox {
+  background-color: rgba(239, 239, 239, 0.40);
+  border: 2px none;
+  border-radius: 4px;
+
+  width: fit-content;
+  height:fit-content;
+  padding: 1.5rem;
+  margin: 1 auto;
+}
+
+.section {
+  background-color: #8b4f80;
   flex: 0 1 auto;
   margin: 1rem;
-  padding: 1.5rem;
+  padding: 1rem;
 }
 
 .right_section {
-  background-color: rgba(185, 210, 177, 0.702);
+  background-color: #8b76a5;
   flex: 1 2 auto;
   margin: 1rem;
   align-items: center;
@@ -155,16 +167,16 @@ form {
 .footer {
   flex-shrink: 0;
   padding: 1rem;
-  background-color: rgba(241, 214, 184, 0.8);
+  background-color: #b9c0d5;
   font-size: 1.2rem;
   font-weight: 600;
   display: flex;
   align-items: flex-end;
+  justify-content: space-between;
 }
 
 .footer a {
-  color: rgb(161, 130, 118);
-  text-decoration: underline;
+  color: #0f0f0f;
 }
 
 /*
@@ -173,10 +185,8 @@ form {
   This is pretty desktop-specific, since there's no hover function on touchscreens
 */
 .footer a:hover {
-  /* Hue, saturation, luminosity, alpha */
-  background-color: hsla(0, 0%, 90%, 0.15);
-  /* red, green, blue, alpha */
-  color: #fbacbe;
+  background-color: #cecece;
+  color: #b9c0d5;
   text-decoration: none;
 }
 
@@ -389,4 +399,3 @@ form input {
       transform: translate(24px, 0);
     }
   }
-  
