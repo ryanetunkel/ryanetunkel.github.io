@@ -32,33 +32,6 @@ function cutRestaurantList(list) {
   }));
 }
 
-function initMap() {
-  // 38.9072 N, 77.0369 W
-  const carto = L.map('map').setView([38.98, -76.93], 13); // L means Use Leaflet
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  }).addTo(carto);
-  return carto;
-}
-
-function markerPlace(array, map) {
-  console.log("array for markers", array);
-
-  map.eachLayer((layer) => {
-    if (layer instanceof L.Marker) {
-      layer.remove();
-    }
-  });
-
-  array.forEach((item) => {
-    console.log("markerPlace", item);
-    const {coordinates} = item.geocoded_column_1;
-
-    L.marker([coordinates[1], coordinates[0]]).addTo(map);
-  });
-}
-
 function initChart(target, data, labels) {
   const chart = new Chart(target, {
     type: 'bar',
@@ -111,7 +84,6 @@ function updateChart(chart, newInfo) {
 async function mainEvent() { 
   // the async keyword means we can make API requests
   const loadDataButton = document.querySelector("#data_load");
-  const clearDataButton = document.querySelector("#data_clear");
   const generateListButton = document.querySelector("#generate");
   const textField = document.querySelector("#list_selector");
   const chart = document.querySelector("#myChart");
@@ -159,7 +131,7 @@ async function mainEvent() {
     }
 
     loadAnimation.style.display = "none";
-    // console.table(storedList); 
+    console.table(storedList); 
   });
 
   generateListButton.addEventListener("click", (event) => {
@@ -177,13 +149,6 @@ async function mainEvent() {
     injectHTML(newList);
     updateChart(newChart, newList);
   });
-
-  // TODO: add data clear button
-  // clearDataButton.addEventListener("click", (event) => {
-  //   console.log("clear browser data");
-  //   localStorage.clear();
-  //   console.log("localStorage Check", localStorage.getItem("storedData"));
-  // });
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests
