@@ -6,7 +6,7 @@ function getRandomIntInclusive(min, max) {
 
 function injectHTML(list) {
   console.log("fired injectHTML");
-  const target = document.querySelector("#restaurant_list");
+  const target = document.querySelector("#watershed_list");
   target.innerHTML = "";
   list.forEach((item) => {
     const str = `<li>${item.name}</li>`;
@@ -23,7 +23,7 @@ function filterList(list, query) {
   });
 }
 
-function cutRestaurantList(list) {
+function cutList(list) {
   console.log("fired cut list");   // Array Method that does for-loop math to make code cleaner, easier to read, and use less reasoning
   const range = [...Array(15).keys()]; // ... is a destructuring element, makes an array of 15 elements that definitely only has 15 elements in it
   return (newArray = range.map((item) => { // map does same as foreach but returns new array
@@ -136,7 +136,7 @@ async function mainEvent() {
 
   generateListButton.addEventListener("click", (event) => {
     console.log("generate new list");
-    currentList = cutRestaurantList(parsedData);
+    currentList = cutList(parsedData);
     console.log(currentList);
     injectHTML(currentList);
     updateChart(newChart, currentList);
