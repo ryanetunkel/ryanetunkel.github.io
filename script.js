@@ -149,7 +149,8 @@ async function mainEvent() {
     // albeit full of undefined results when was trying to implement the dnd version
 
     // This changes the response from the GET into data we can use - an "object"
-    const storedList = await results.json();
+    console.log(results);
+    const storedList = await (results).json();
     localStorage.setItem("storedData", JSON.stringify(storedList));
     parsedData = storedList;
 
